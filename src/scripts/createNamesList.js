@@ -4,8 +4,6 @@ import {
     RemoveFromSavedName
 } from "./localstorage.js"
 
-
-
 const CreateNamesList = () => {
     namesContainer.innerHTML = '';
     let savedNamesList = GetSavedNamesFromLocalStorage();
