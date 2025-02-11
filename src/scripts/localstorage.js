@@ -1,6 +1,8 @@
 const SaveName = (name) => {
-    let nameArr = GetSavednameFromLocalStorage();
-    if (!nameArr.includes(name)) {
+    let nameArr = GetSavedNamesFromLocalStorage();
+    const GetIds = nameArr.map((names) => names.Id)
+    console.log(GetIds);
+    if (!GetIds.includes(name.Id)) {
       nameArr.push(name);
     }
     localStorage.setItem("SavedNames", JSON.stringify(nameArr));
