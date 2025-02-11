@@ -35,11 +35,11 @@ const CreateNamesList = () => {
         nameDiv.classList = 'flex justify-evenly';
 
         let removeBtn = document.createElement('button');
-        removeBtn.classList = '';
-        removeBtn.innerText = '';
+        removeBtn.classList = 'border-2';
+        removeBtn.innerText = 'Remove';
         removeBtn.addEventListener('click', () => {
             RemoveFromSavedName(names);
-            savedNamesList.remove();
+            nameDiv.remove();
             namesCounter = savedNamesList
                 .filter(n => n.Id !== names.Id)
                 .length
