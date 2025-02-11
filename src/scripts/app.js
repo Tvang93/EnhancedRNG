@@ -4,6 +4,13 @@ import {
     RemoveFromSavedName
 } from "./localstorage.js"
 
+import {
+    CreateNamesList, 
+    SetNamesCount
+} from "./createNamesList.js"
+
+import { GenerateRandomName } from "./generateRandomName.js";
+
 const nameInputField = document.getElementById("nameInputField");
 const addNameBtn = document.getElementById("addNameBtn");
 const randomNameBtn = document.getElementById("randomNameBtn");
@@ -22,44 +29,16 @@ addNameBtn.addEventListener('click', () => {
         nameObject.Name = nameInputField.value;
         SaveName(nameObject);
         CreateNamesList();
+        nameInputField.value = '';
     }
 })
 
-const CreateNamesList = () => {
-    namesContainer.innerHtml = '';
-    let savedNamesList = GetSavedNamesFromLocalStorage();
-    let namesCounter = 0
+randomNameBtn.addEventListener('click', () => {
+    alert(GenerateRandomName());
+})
 
-    savedNamesList.map((names) => {
-        let nameDiv = document.createElement('div');
-        nameDiv.classList = 'flex justify-evenly';
-
-        let removeBtn = document.createElement('button');
-        removeBtn.classList = 'border-2';
-        removeBtn.innerText = 'Remove';
-        removeBtn.addEventListener('click', () => {
-            RemoveFromSavedName(names);
-            nameDiv.remove();
-            namesCounter = savedNamesList
-                .filter(n => n.Id !== names.Id)
-                .length
-            SetNamesCount(namesCounter);
-        })
-
-        let savedNameText = document.createElement('h1');
-        savedNameText.innerText = names.Name;
-
-        nameDiv.appendChild(savedNameText);
-        nameDiv.appendChild(removeBtn);
-        
-        namesContainer.appendChild(nameDiv);
-        namesCounter++
-    })
-    SetNamesCount(namesCounter);
-}
-
-const SetNamesCount = (num) => {
-    namesCount.innerText = `Total Names: ${num}`;
-}
+generateGroupsBtn.addEventListener('click', () => {
+    GenerateRandomGroups()
+})
 
 CreateNamesList();

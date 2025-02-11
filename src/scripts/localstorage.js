@@ -1,7 +1,6 @@
 const SaveName = (name) => {
     let nameArr = GetSavedNamesFromLocalStorage();
     const GetIds = nameArr.map((names) => names.Id)
-    console.log(GetIds);
     if (!GetIds.includes(name.Id)) {
       nameArr.push(name);
     }
