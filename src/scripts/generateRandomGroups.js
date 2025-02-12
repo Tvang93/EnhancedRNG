@@ -12,6 +12,8 @@ const GenerateRandomGroups = (num) => {
             let savedNamesList = GetSavedNamesFromLocalStorage();
             let numArray = [];
             let randomNumArr = [];
+            let groupedArr = [];
+            let newererArr = []
             
 
             for(let i = 0; i < savedNamesList.length; i++){
@@ -26,12 +28,45 @@ const GenerateRandomGroups = (num) => {
 
             console.log(randomNumArr)
             
+            for(let i = 0; i < Math.ceil(savedNamesList.length/num); i++){
+                newererArr = []
+                for(let j = 0; j < num; j++){
+                    if(randomNumArr.length>0){
+                        newererArr.push(randomNumArr[j])
+                    }
+                }
+                groupedArr.push(newererArr);
+                randomNumArr.splice(0, num)
+            }
+
+            console.log(groupedArr)
             
             console.log("People Per Group")
         }
 
         if(!isPersonsPerGroup){
             console.log("Number of Groups")
+            let savedNamesList = GetSavedNamesFromLocalStorage();
+            let numArray = [];
+            let randomNumArr = [];
+            
+
+            for(let i = 0; i < savedNamesList.length; i++){
+                numArray.push(i)
+            };
+
+            for(let i = 0; i < savedNamesList.length; i++){
+                let rnum = Math.floor(Math.random()*numArray.length);
+                randomNumArr.push(numArray[rnum]);
+                numArray = numArray.filter(num => num != numArray[rnum]);
+            };
+
+            console.log(randomNumArr)
+
+            
+
+            
+
         }
 
     }else{
