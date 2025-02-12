@@ -27,7 +27,11 @@ const GenerateRandomGroups = (num) => {
             console.log(randomNumArr)
             
             
+            console.log("People Per Group")
+        }
 
+        if(!isPersonsPerGroup){
+            console.log("Number of Groups")
         }
 
     }else{

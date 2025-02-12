@@ -27,3 +27,5 @@ Enhanced Random Name Generator
         Built in Vanilla JS
         Desktop Build for this application.
 
+### Did Not Finish
+Did not get logic for random groups
